@@ -1,0 +1,65 @@
+!--//cx-affiliate-stag.cellxpert.com/-->
+<!doctype html>
+<html ng-strict-di>
+
+<head>
+    <meta charset="utf-8">
+    <title ng-bind="pageTitlePrefix + ' - ' + pageTitle"></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!--<link href="//fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css">-->
+	<link href="//cx-affiliate-prod.cellxpert.com/assets/gassets/creteRound400italicLato300,400,400italic,700Raleway300,400,500,600,700.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//cx-affiliate-stag.cellxpert.com/styles/vendor.css?vv=1.5.7">
+    <link rel="stylesheet" href="//cx-affiliate-stag.cellxpert.com/styles/app.css?vv=1.5.7">
+	<script>
+		function findGetParameter(parameterName) {
+			var result = null,
+				tmp = [];
+			location.search
+				.substr(1)
+				.split("&")
+				.forEach(function (item) {
+				tmp = item.split("=");
+				if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+				});
+			return result;
+		}
+		const token = findGetParameter("token")
+		if (token) {
+			localStorage.setItem("affiliateApiToken", token)
+			window.history.replaceState({}, document.title, "/affiliatev2/");
+		}
+	</script>
+	<script>
+		(function (window) {
+	  window.__cxEnv = window.__cxEnv || {};
+	  window.__cxEnv.API_PATH = '/affiliate/';
+	  window.__cxEnv.ENVIRONMENT = "staging";
+	  window.__cxEnv.NEW_API_URL = 'https://affiliateapi.cellxpert.com';
+	  window.__cxEnv.ProgramName = 'Fiverr';
+	  // Whether or not to enable debug mode
+	  // Setting this to false will disable console output
+	  window.__cxEnv.ENABLE_DEBUG = true;
+	  
+	}(this));
+	</script>
+    <script src="//cx-affiliate-stag.cellxpert.com/scripts/build/vendor.js?vv=1.5.7"></script>
+    <script src="//cx-affiliate-stag.cellxpert.com/scripts/xml2json.min.js?vv=1.5.7"></script>
+</head>
+
+<body>
+    <!--[if lt IE 10]>
+ <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+ <![endif]-->
+    <div ng-include="'//cx-affiliate-stag.cellxpert.com/templates/partials/top-notification-bar.html'" ng-if="showTopNotificationBar"></div>
+    <div ui-view="" id="app" ng-class="{'app-mobile' : app.isMobile, 'app-navbar-fixed' : app.layout.isNavbarFixed, 'app-sidebar-fixed' : app.layout.isSidebarFixed, 'app-sidebar-closed':app.layout.isSidebarClosed, 'app-footer-fixed':app.layout.isFooterFixed}"></div>
+
+    <script>var cxCacheBusterVersion = "1.5.7"</script>
+    <script src="//cx-affiliate-stag.cellxpert.com/scripts/build/bundle.js?vv=1.5.7"></script>
+    <script src="//cx-affiliate-stag.cellxpert.com/scripts/datatables-plugins.js?vv=1.5.7"></script>
+
+    <div login-dialog></div>
+
+</body>
+
+</html>
